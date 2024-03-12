@@ -99,15 +99,15 @@
         title.classList.add('myHeading')
       }
       addClassToTitle()
-      console.log(title)
+      // console.log(title)
 
       /* ESERCIZIO 3
                Scrivi una funzione che cambi il testo dei p figli di un div
               */
 
       const changePcontent = function () {
-        const AllDiv = document.querySelectorAll('div')
-        AllDiv.forEach((element) => {
+        const allDivs = document.querySelectorAll('div')
+        allDivs.forEach((element) => {
           const allP = element.querySelectorAll('p')
           allP.forEach((element) => {
             element.innerText = 'paragrafo cambiato :)'
@@ -120,9 +120,11 @@
               */
 
       const changeUrls = function () {
-        document
-          .getElementsByTagName('a')[0]
-          .setAttribute('href', 'http://www.google.com')
+        /* let linkToChange = document.querySelector('div a')
+        for (let i = 0; i < linkToChange.length; i++) {
+          linkToChange[i].href = 'https://www.google.com'
+        } */
+        document.getElementsByTagName('a')[0].href = 'http://www.google.com'
       }
       changeUrls()
       /* ESERCIZIO 5
@@ -154,7 +156,7 @@
             */
 
       const hideFirstUl = function () {
-        firstList.remove()
+        firstList.hidden = true
       }
       hideFirstUl()
 
@@ -175,12 +177,14 @@
               */
 
       const makeItClickable = function () {
-        const h1 = document.querySelector('h1')
-        h1.onclick = function () {
-          h1.innerText = 'Questo è il titolo della pagina modificat'
-        }
+        const h1First = document.querySelector('h1')
+        const h1text = h1First.innerText
+        const newH1Text = h1text.substring(0, h1text.length - 1)
+        h1First.innerText = newH1Text
       }
-      makeItClickable()
+      const h1First = document.querySelector('h1')
+
+      hiFirst.onclick = makeItClickable
 
       /* ESERCIZIO 10
                Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
@@ -200,7 +204,11 @@
                La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
             */
 
-      const generateTable = function () {}
+      const generateTable = function () {
+        const table = document.createElement('table')
+        table.style.width = '100%'
+        table.setAttribute('border', '1')
+      }
 
       /* ESERCIZIO 12
                Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
