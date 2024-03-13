@@ -184,7 +184,7 @@
       }
       const h1First = document.querySelector('h1')
 
-      hiFirst.onclick = makeItClickable
+      h1First.onclick = makeItClickable
 
       /* ESERCIZIO 10
                Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
@@ -203,18 +203,99 @@
                Crea una funzione che crei una tabella nell'elemento con id "tableArea".
                La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
             */
+      const table = document.createElement('table')
 
       const generateTable = function () {
+        const tableData = [
+          {
+            img: '',
+            name: 'Tulipano',
+            quantity: 3,
+            price: 5 + '€',
+          },
+          {
+            img: '',
+            name: 'Rally Car',
+            quantity: 1,
+            price: 30000 + '€',
+          },
+          {
+            img: '',
+            name: 'Moto BMW',
+            quantity: 1,
+            price: 18000 + '€',
+          },
+        ]
+
         const table = document.createElement('table')
-        table.style.width = '100%'
-        table.setAttribute('border', '1')
+        const tr1 = document.createElement('tr')
+
+        const headings = ['immagine', 'Nome', 'Quantità', 'Prezzo']
+
+        for (let i = 0; i < headings.length; i++) {
+          const th = document.createElement('th')
+          th.innerText = headings[i]
+
+          tr1.appendChild(th)
+        }
+        table.appendChild(tr1)
+
+        for (let i = 0; i < tableData.length; i++) {
+          const tr = document.createElement('tr')
+          const obj = tableData[i]
+          const tdImage = document.createElement('td')
+          const img = document.createElement('img')
+          img.src = obj.img
+          img.width = 250
+
+          const tdName = document.createElement('td')
+          tdName.innerText = obj.name
+
+          const tdQuantity = document.createElement('td')
+          tdQuantity.innerText = obj.quantity
+
+          const tdPrice = document.createElement('td')
+          tdPrice.innerText = obj.price
+
+          tr.append(tdImage, tdName, tdQuantity, tdPrice)
+
+          table.appendChild(tr)
+        }
+
+        tableArea.appendChild(table)
       }
+
+      generateTable()
 
       /* ESERCIZIO 12
                Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
             */
 
-      const addRow = function () {}
+      const addRow = function (image, name, quantity, price) {
+        const table = querySelector('table')
+
+        if (table !== null) {
+          const tr = document.createElement('tr')
+
+          const tdImage = document.createElement('td')
+          const img = document.createElement('img')
+          img.src = obj.img
+          img.width = 250
+          tdImage.appendChild(img)
+
+          const tdName = document.createElement('td')
+          tdName.innerText = name
+
+          const tdQuantity = document.createElement('td')
+          tdQuantity.innerText = quantity
+
+          const tdPrice = document.createElement('td')
+          tdPrice.innerText = price
+
+          tr.append(tdImage, tdName, tdQuantity, tdPrice)
+        }
+        table.appendChild(tr)
+      }
 
       /* ESERCIZIO 14
               Crea una funzione che nasconda le immagini della tabella quando eseguita
